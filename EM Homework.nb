@@ -1,0 +1,184 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5872,        176]
+NotebookOptionsPosition[      5032,        154]
+NotebookOutlinePosition[      5376,        169]
+CellTagsIndexPosition[      5333,        166]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"pdfmultiGauss", "[", 
+    RowBox[{"x_", ",", "\[Mu]_", ",", "\[Sigma]_"}], "]"}], ":=", " ", 
+   RowBox[{
+    FractionBox["1", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"2", "\[Pi]", "*", 
+        SuperscriptBox["\[Sigma]", "2"]}], ")"}], 
+      RowBox[{
+       RowBox[{"Length", "[", "x", "]"}], "/", "2"}]]], "*", 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"-", "1"}], 
+       RowBox[{"2", 
+        SuperscriptBox["\[Sigma]", "2"]}]], "*", 
+      SuperscriptBox[
+       RowBox[{"Norm", "[", 
+        RowBox[{"x", "-", "\[Mu]"}], "]"}], "2"]}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.794653731250346*^9, 3.7946537821948853`*^9}, {
+  3.794654094178259*^9, 3.7946540974306526`*^9}, {3.794654129158908*^9, 
+  3.7946543393630085`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"04f57c0d-b4a1-4d16-9697-11e6ce118c8f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Log", "@", 
+  RowBox[{"pdfmultiGauss", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       FractionBox["1", 
+        SqrtBox["\[Pi]"]], "}"}], ",", 
+      RowBox[{"{", "2", "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", "0", "}"}], ",", 
+      RowBox[{"{", "2", "}"}]}], "}"}], ",", 
+    SqrtBox[
+     FractionBox["1", 
+      RowBox[{"2", "\[Pi]"}]]]}], "]"}]}]], "Input",
+ CellChangeTimes->{3.79465433453154*^9},
+ CellLabel->"In[6]:=",ExpressionUUID->"8c41c507-fc20-4bd2-bdc5-bc2432d0e252"],
+
+Cell[BoxData[
+ RowBox[{"-", "1"}]], "Output",
+ CellChangeTimes->{{3.7946543252003555`*^9, 3.7946543423091526`*^9}},
+ CellLabel->"Out[6]=",ExpressionUUID->"f55bface-c893-4c0f-9538-6f85d8500ae4"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "0", ",", "4", ",", "5", ",", "6"}], "}"}]}], 
+    ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"p1x", "[", 
+      RowBox[{"x_", ",", "\[Mu]_", ",", "\[Sigma]_"}], "]"}], ":=", "  ", 
+     FractionBox[
+      RowBox[{"0.5", "*", 
+       RowBox[{"pdfmultiGauss", "[", 
+        RowBox[{
+         RowBox[{"{", "x", "}"}], ",", " ", 
+         RowBox[{"{", "\[Mu]", "}"}], ",", "\[Sigma]"}], "]"}]}], 
+      RowBox[{
+       RowBox[{"0.5", "*", 
+        RowBox[{"pdfmultiGauss", "[", 
+         RowBox[{
+          RowBox[{"{", "x", "}"}], ",", " ", 
+          RowBox[{"{", "6", "}"}], ",", "1"}], "]"}]}], "+", 
+       RowBox[{"0.5", "*", 
+        RowBox[{"pdfmultiGauss", "[", 
+         RowBox[{
+          RowBox[{"{", "x", "}"}], ",", " ", 
+          RowBox[{"{", "7", "}"}], ",", "2"}], "]"}]}]}]]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{"Log", "[", 
+      RowBox[{
+       RowBox[{
+        FractionBox["1", "2"], "*", 
+        RowBox[{"p1x", "[", 
+         RowBox[{
+          RowBox[{"x", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+           ",", " ", "6", ",", "1"}], "]"}]}], "+", 
+       RowBox[{
+        FractionBox["1", "2"], "*", 
+        RowBox[{"p1x", "[", 
+         RowBox[{
+          RowBox[{"x", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+           ",", " ", "7", ",", "2"}], "]"}]}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "x", "]"}]}], "}"}]}], "]"}], "\n"}]}]], "Input",
+ CellChangeTimes->{{3.79465451220761*^9, 3.794654595458464*^9}, {
+  3.7946569679776206`*^9, 3.7946570220986032`*^9}, {3.794657145664107*^9, 
+  3.79465743423977*^9}, {3.7946575358525887`*^9, 3.794657543628001*^9}, {
+  3.7946576747409134`*^9, 3.794657688872466*^9}},
+ CellLabel->"In[59]:=",ExpressionUUID->"c323a059-28ab-475b-af23-9c8bc5e47ca0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Thread", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"p1x", "[", 
+       RowBox[{"#", ",", "6", ",", "1"}], "]"}], "&"}], "/@", "x"}], ")"}], 
+   ">", "0.5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7946582598177085`*^9, 3.7946583676170607`*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"c1207272-9f4f-4273-896f-2e2fc756a5b4"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"False", ",", "False", ",", "False", ",", "True", ",", "True"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.794658273868185*^9, 3.7946583135236025`*^9}, 
+   3.7946583678146267`*^9},
+ CellLabel->"Out[66]=",ExpressionUUID->"e3178c64-0021-4bf6-971d-bf25a6a38731"]
+}, Open  ]]
+},
+WindowSize->{759, 805},
+WindowMargins->{{Automatic, -5}, {-247, Automatic}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 914, 25, 50, "Input",ExpressionUUID->"04f57c0d-b4a1-4d16-9697-11e6ce118c8f"],
+Cell[CellGroupData[{
+Cell[1497, 49, 566, 18, 60, "Input",ExpressionUUID->"8c41c507-fc20-4bd2-bdc5-bc2432d0e252"],
+Cell[2066, 69, 193, 3, 32, "Output",ExpressionUUID->"f55bface-c893-4c0f-9538-6f85d8500ae4"]
+}, Open  ]],
+Cell[2274, 75, 2035, 54, 146, "Input",ExpressionUUID->"c323a059-28ab-475b-af23-9c8bc5e47ca0"],
+Cell[CellGroupData[{
+Cell[4334, 133, 380, 10, 28, InheritFromParent,ExpressionUUID->"c1207272-9f4f-4273-896f-2e2fc756a5b4"],
+Cell[4717, 145, 299, 6, 65, "Output",ExpressionUUID->"e3178c64-0021-4bf6-971d-bf25a6a38731"]
+}, Open  ]]
+}
+]
+*)
+

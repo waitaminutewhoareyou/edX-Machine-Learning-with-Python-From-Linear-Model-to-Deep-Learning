@@ -1,0 +1,21 @@
+import numpy as np
+labels = [-1, -1, -1, -1, -1, 1, 1, 1, 1, 1]
+coordinates = [	(0,0),(2,0),(1,1),(0,2),(3,3),(4,1),(5,2),(1,4),	(4,4),	(5,5)]
+mistakes = [1,65,	11,	31,	72	,30	,0	,21	,4,15]
+for triple in zip(labels, coordinates, mistakes):
+    print(triple)
+
+theta= np.array([0,0,0 ])
+theta0 = 0
+
+def feature_tranform(coordinate):
+    x1,x2 = coordinate
+    return np.array([x1**2,np.sqrt(2)*x1*x2,x2**2 ])
+
+for i in range(len(labels)):
+    theta = theta +  mistakes[i]*labels[i]*feature_tranform(coordinates[i])
+    theta0 = theta0+ mistakes[i]* labels[i]
+
+transformed_feature = np.array(list(map(feature_tranform, coordinates)))
+output = [ (np.dot(theta, x)+theta0)>0 for x in transformed_feature]
+print(output)
